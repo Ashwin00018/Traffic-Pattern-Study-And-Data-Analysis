@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrafficFlow</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css"/>
+</head>
+<body>
+  <div>
+    <header class="main">
+      <nav class="navbar">
+        <logo class="logo">
+          <img src="logoimg1.jpeg">               
+        </logo>
+        <a href="#index.html">Home</a>
+        <a href="#" id="openPopupNav">Live Map</a>
+        <a href="#about-us" class="nav-link">About Us</a>
+        
+      </nav>
+    </header>
+
+    <div class="Container">
+      <img src="traffic image.jpg" class="bodyimg">
+      <h1 class="intro">TrafficFlow: Navigating Urban Insights</h1>
+      <h2 class="para">Real-time Traffic, Focused Data. Explore live patterns and uncover micro-insights shaping our cities.</h2>
+      <div class="map-button">
+        <a href="#" class="Map-link" id="openPopupBtn">View Live Traffic Map</a>
+      </div>
+      <div class="data">
+        <a href="#" class="data-insight" id="openDataPopup">Discover Data Insights</a>
+      </div>
+    </div>
+
+    <div class="quick-insight">
+      <h2 class="quick-head">Quick Look Insights</h2>
+      <div class="morning-rush">
+        <h2>Morning Rush Hour Impact</h2>
+        <i class="fa-solid fa-chart-column" style="color: #ffffff;"></i>
+        <a href="#" class="Explore-insight" id="openRushHour">Explore Insights</a>
+
+        <!-- 🔹 Morning popup -->
+         
+        <div id="rushHourPopup" class="popup-overlay">
+          <div class="popup-box data-box">
+            <h2>Morning Rush Hour Impact</h2>
+            <div id="rushHourImpact" style="text-align:center; color:white;">
+              <canvas id="trafficDonut" width="180" height="180"></canvas>
+              <p style="margin-top:10px; font-size:15px;">Traffic Intensity: 
+                <strong style="color:#FF3B3B;">High</strong> 🚦
+              </p>
+              <p style="font-size:13px;">Average Waiting Time: <strong>6–8 minutes</strong></p>
+            </div>
+            <button id="closeRushHourPopup" class="popup-close">×</button>
+          </div>
+        </div>
+
+<div class="parking">
+  <h2 class="parking-header">Parking Spot Utilization</h2>
+  <i class="fa-solid fa-square-parking" style="color:#ffffff;"></i>
+  <a href="#" class="Explore-insight" id="openParkingPopup">Explore Insights</a>
+</div>
+
+<!-- 🅿️ Parking Popup -->
+<div id="parkingPopupOverlay">
+  <div class="parking-popup">
+    <button id="closeParkingPopup" class="popup-close">×</button>
+    <!-- <h2 class="parking-title">Parking Spot Utilization</h2> -->
+    <p class="parking-text">
+      🚗 This upcoming feature will soon provide real-time parking availability insights,
+      predictive analytics, and smart parking suggestions for future updates.
+    </p>
+    <button id="notifyParking" class="notify-btn">Notify Me</button>
+    <p id="parkingAlert" class="custom-alert">✅ You’ll be notified when this feature is live!</p>
+  </div>
+</div>
+        
+
+        <!-- ✅ Night Rush Hour -->
+        <div class="Night-rush">
+          <h2 class="night-header">Night Rush Hour Impact</h2>
+          <i class="fa-solid fa-chart-column" style="color: #ffffff;"></i>
+          <a href="#" class="Explore-insight" id="openNightPopup">Explore Insights</a>
+        </div>
+
+        <!-- 🟣 Night Rush Hour Popup (Added) -->
+        <div id="nightPopupOverlay" class="popup-overlay">
+          <div class="popup-box data-box">
+            <h2>Night Rush Hour Impact</h2>
+            <div id="nightRushImpact" style="text-align:center; color:white;">
+              <canvas id="nightChart" width="200" height="200"></canvas>
+              <p style="margin-top:10px; font-size:15px;">Traffic Intensity:
+                <strong style="color:#4CAF50;">Moderate</strong> 🌙
+              </p>
+              <p style="font-size:13px;">Average Waiting Time: <strong>4–6 minutes</strong></p>
+            </div>
+            <button id="closeNightPopup" class="popup-close">×</button>
+          </div>
+        </div>
+
+        <!-- 🚍 Public Transport Ridership -->
+        <div class="public-transport">
+          <h2 class="transport-header">Public Transport Ridership</h2>
+          <i class="fa-duotone fa-solid fa-car-side" style="--fa-primary-color: #ffffff; --fa-secondary-color: #ffffff;"></i>
+          <a href="#" class="Explore-insight" id="openTransportPopup">Explore Insights</a>
+        </div>
+
+        <!-- 🚍 Public Transport Popup (Added) -->
+        <div id="transportPopupOverlay" class="popup-overlay">
+          <div class="popup-box data-box" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <h2 style="color:white;">Public Transport Ridership</h2>
+            <canvas id="ridershipMeter" width="220" height="220" style="margin:auto;"></canvas>
+            <canvas id="ridershipBars" width="300" height="180" style="margin-top:20px;"></canvas>
+            <p id="ridershipInfo" style="color:white;text-align:center;margin-top:10px;font-size:14px;"></p>
+            <button id="closeTransportPopup" class="popup-close">×</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Map Popup -->
+  <div id="popupOverlay" class="popup-overlay">
+    <div class="popup-box">
+      <h2>Check Live Traffic</h2>
+      <input type="text" placeholder="From" class="popup-input">
+      <input type="text" placeholder="To" class="popup-input">
+      <button class="popup-btn">Search</button>
+      <button id="closePopup" class="popup-close">×</button>
+    </div>
+  </div>
+
+  <!-- Data Insights Popup -->
+  <div id="dataPopupOverlay" class="popup-overlay">
+    <div class="popup-box data-box">
+      <h2>Data Insights</h2>
+      <div id="dataContent" class="data-content">Loading data...</div>
+      <button id="closeDataPopup" class="popup-close">×</button>
+    </div>
+  </div>
+<section id="about-us">
+  <div class="about-container">
+    <h2>About <span style="color:#00bfff;">TrafficFlow</span></h2>
+
+    <div class="about-grid">
+      <!-- Left Column -->
+      <div class="about-left">
+        <p>
+      <strong>TrafficFlow</strong> is a real-time traffic insight platform designed to help users
+      visualize live traffic data, analyze congestion during peak hours, and make smarter travel decisions.
+      Our aim is to make urban commuting more efficient using technology and data analytics.
+    </p>
+
+    <h3>What We Offer</h3>
+    <ul>
+      <li> Real-time route visualization using <strong>TomTom Maps API</strong></li>
+      <li> Interactive charts powered by <strong>Chart.js</strong></li>
+      <li> Live peak hour and rush hour analysis</li>
+      <li> Public transport ridership insights based on user data</li>
+    </ul>
+
+    <h3>Our Mission</h3>
+    <p>
+      To make cities smarter by reducing traffic congestion and promoting real-time,
+      data-driven travel awareness.
+    </p>
+
+        <h3>Our Team</h3>
+        <ul style="list-style:none; padding:0;">
+          <li><strong>Ashwin Rai</strong> — Frontend Developer <a href="#" style="color:#00bfff;">LinkedIn</a></li>
+          <li><strong>Manav</strong> — Data Analyst <a href="#" style="color:#00bfff;">LinkedIn</a></li>
+          <li><strong>Rashi Rajak</strong> — Research Coordinator <a href="#" style="color:#00bfff;">LinkedIn</a></li>
+          <li><strong>Aditya</strong> — Visualization Lead <a href="#" style="color:#00bfff;">LinkedIn</a></li>
+        </ul>
+      </div>
+
+      <!-- Right Column -->
+      <div class="about-right">
+        <div class="faq-section">
+  <h3>Frequently Asked Questions</h3>
+
+  <div class="faq-item">
+    <button class="faq-question">1️ What is TrafficFlow?</button>
+    <div class="faq-answer">TrafficFlow is a real-time web project designed to study, analyze, and visualize live city traffic using data analytics and TomTom API.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">2️ How does live traffic visualization work?</button>
+    <div class="faq-answer">The website uses TomTom Maps API and real survey data to display actual congestion patterns and rush hour behavior.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">3️ Can users contribute traffic data?</button>
+    <div class="faq-answer">Yes, users participated through Google Forms to provide responses which were used for analysis and visualization.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">4️ Is this project open-source?</button>
+    <div class="faq-answer">Currently, TrafficFlow is a student project but can be expanded as an open-source initiative in future updates.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">5️ Where does the traffic data come from?</button>
+    <div class="faq-answer">Data comes from survey responses and real-time data provided by TomTom’s live traffic API.</div>
+  </div>
+</div>
+
+        <h3>Privacy Policy</h3>
+        <p>
+          We collect minimal data (like email for feedback). Your information is secure,
+          never shared, and all visualized traffic data is anonymized.
+        </p>
+
+        <h3>Terms & Conditions</h3>
+        <p>
+          Use the TrafficFlow platform responsibly. Don’t misuse map data or submit false
+          information. Follows Indian cyber safety regulations.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <img src="logoimg1.jpeg" alt="TrafficFlow Logo">
+      <p>TrafficFlow helps you explore real-time traffic patterns and make data-driven travel decisions.</p>
+    </div>
+
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#" id="openPopupBtn">Live Map</a></li>
+        <li><a href="#" id="openDataPopup">Data Insights</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <h3>Contact</h3>
+      <ul>
+        <li><i class="fa-solid fa-envelope"></i> trafficflow.@gmail.com</li>
+        <li><i class="fa-solid fa-phone"></i> +91 98765 43210</li>
+        <li><i class="fa-solid fa-location-dot"></i> Mumbai, India</li>
+      </ul>
+    </div>
+
+    <div class="footer-social">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/ashwin-rai-099b20316"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/itz_ashwin_101?igsh=YjRzeG45OHo3OHJ3"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://github.com/Ashwin00018"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 TrafficFlow | Designed by <span>Ashwin Rai</span> & Team</p>
+  </div>
+</footer>
+
+    <!-- Scroll to Top Button -->
+<button id="scrollTopBtn" title="Go to top">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+
+  <script src="index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
+</body>
+</html>

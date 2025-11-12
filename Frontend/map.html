@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="map.css">
+    <link rel="stylesheet" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css"/>
+    
+</head>
+<body>
+  <!-- 🔙 Transparent Back Button -->
+<button class="back-btn" onclick="goToHome()">
+  <i class="fa-solid fa-arrow-left"></i> Back
+</button>
+    <div class="map">
+        <div id="map"></div>
+        
+        <div id="trafficChartContainer">s
+            <h2>Traffic Patterns</h2>
+            <canvas id="trafficChart" width="600" height="400"></canvas>
+            
+        </div>
+        <div class="peak-hour">
+  <div class="chart-box">
+    <canvas id="trafficChart" width="400" height="300"></canvas>
+  </div>
+
+  <div class="peak-box">
+    <h2 class="peak-head">Peak Hour Traffic</h2>
+    <canvas id="peakDonut" width="300" height="300"></canvas>
+    <p id="peakAvg">Average Delay: -- mins</p>
+
+    <!-- 🧭 Smart Route Suggestion -->
+<div id="routeSuggestionBox"
+     style="background:rgba(0,0,0,0.05);
+            border-left:5px solid #03a9f4;
+            padding:20px;
+            width:280px;
+            border-radius:10px;
+            color:#111;
+            font-size:15px;
+            line-height:1.6;
+            box-shadow:0 0 8px rgba(0,0,0,0.1);
+            min-height:100px;
+            margin-top:20px;">
+  <p>Fetching live route suggestion...</p>
+</div>
+  </div>
+</div>
+</div>
+
+    </div>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="map.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+/* 🔙 Transparent Back Button */
+.back-btn {
+  position: fixed;         /* always visible on top */
+  top: 20px;
+  left: 20px;
+  background: transparent;
+  color: black;
+  border: 2px solid white;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px 4px black;
+  z-index: 9999;
+}
+.back-btn:active{
+  transform:translate(3px);
+}
+
+.back-btn:hover {
+  background: rgba(255,255,255,0.15);
+  transform: scale(1.05);
+}
+
+
+
+#map{ 
+    height:600px;
+    width:100%;
+    background-size:cover;
+}
+
+#trafficChartContainer{
+    color:black;
+    margin-left: 100px;
+}
+
+#trafficChart{
+    max-width: 600px;
+    max-height: 400px;
+}
+
+
+/* === PEAK HOUR FIX === */
+.peak-hour {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 90px;            /* bar aur donut ke beech thoda gap */
+  margin-top:-22%;
+}
+
+/* .chart-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+} */
+
+.peak-box {
+  background-color: white;
+  border: none;          /* border hat gaya */
+  box-shadow: none;      /* shadow hat gaya */
+  border-radius: 0;
+  padding: 10px;
+  text-align: center;
+  width: 480px;          /* bada chart */
+  height: 420px;
+}
+
+.peak-box canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.peak-head {
+  color: black;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+#peakAvg {
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
+#routeSuggestionBox {
+  width: 300px;
+  height: 200px;
+  background: rgba(0, 0, 0, 0.05);
+  border-left: 5px solid #03a9f4;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  color: #111;
+  font-size: 15px;
+  line-height: 1.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  position: absolute;
+  top:68%;
+  left:78%;
+}
