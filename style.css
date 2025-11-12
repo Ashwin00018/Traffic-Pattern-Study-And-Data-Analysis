@@ -878,3 +878,129 @@ html{
   transform: scale(1.1);
 }
 
+
+/* ===== 📱 RESPONSIVE DESIGN FIX ===== */
+
+@media (max-width: 1024px) {
+  .intro {
+    font-size: 50px;
+    width: 70%;
+  }
+
+  .para {
+    font-size: 20px;
+    width: 70%;
+  }
+
+  .map-button, .data {
+    top: 80%;
+    left: 8%;
+  }
+
+  .navbar a {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    height: 90px;
+  }
+
+  .logo img {
+    height: 80px;
+  }
+
+  .navbar a {
+    font-size: 20px;
+    margin: 0 10px;
+  }
+
+  .intro {
+    font-size: 38px;
+    width: 90%;
+    top: 25%;
+    left: 5%;
+  }
+
+  .para {
+    font-size: 18px;
+    width: 85%;
+    top: 55%;
+    left: 5%;
+  }
+
+  .map-button, .data {
+    top: 80%;
+    left: 5%;
+    transform: none;
+  }
+
+  .Map-link, .data-insight {
+    padding: 15px 30px;
+    font-size: 18px;
+  }
+
+  /* Quick Insight Boxes responsive fix */
+  .quick-insight {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    margin-top: 30px;
+  }
+
+  .morning-rush, .parking, .Night-rush, .public-transport {
+    width: 80%;
+    height: auto;
+    position: static;
+    margin-bottom: 25px;
+  }
+
+  .quick-head {
+    position: static;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* About Us section */
+  .about-grid {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .about-left, .about-right {
+    width: 100%;
+    padding: 20px;
+  }
+
+  /* Footer section */
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-logo img {
+    width: 120px;
+  }
+
+  .footer-links ul li, .footer-contact ul li {
+    font-size: 18px;
+  }
+
+  #scrollTopBtn {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro {
+    font-size: 32px;
+    width: 95%;
+  }
+
+}
