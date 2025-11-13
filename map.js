@@ -209,16 +209,16 @@ function updatePeakHourChart(noTraffic, withTraffic, delay) {
   let color = "";
 
   if (delayNum > 10) {
-    level = "High 🚨";
-    suggestion = "⚠️ Heavy congestion detected! Try an alternate route or delay your travel by 15–20 mins.";
+    level = "High ";
+    suggestion = " Heavy congestion detected! Try an alternate route or delay your travel by 15–20 mins.";
     color = "rgba(255, 0, 0, 0.1)";
   } else if (delayNum > 5) {
-    level = "Moderate ⚠️";
-    suggestion = "🟡 Moderate traffic ahead. Prefer side roads or avoid peak areas if possible.";
+    level = "Moderate ";
+    suggestion = " Moderate traffic ahead. Prefer side roads or avoid peak areas if possible.";
     color = "rgba(255, 193, 7, 0.1)";
   } else {
-    level = "Low ✅";
-    suggestion = "✅ Smooth traffic flow — you can take this route without delay.";
+    level = "Low ";
+    suggestion = " Smooth traffic flow — you can take this route without delay.";
     color = "rgba(76, 175, 80, 0.1)";
   }
 
