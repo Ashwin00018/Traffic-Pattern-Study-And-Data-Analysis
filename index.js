@@ -71,7 +71,7 @@ function showDataInsights() {
 
       // Example labels and data (replace with real counts if you parse columns)
       const labels = ["Morning", "Afternoon", "Evening"];
-      const data = [6, 4, 7]; // Example — replace with actual counts if parsed
+      const data = [41.2,11.8,9.8]; // Example — replace with actual counts if parsed
 
       dataContent.innerHTML = `
         <div style="color:white; text-align:center;">
@@ -152,7 +152,7 @@ morningPopup.innerHTML = `
     <!-- Right: Live Suggestion Box -->
     <div style="color:white; width:270px; text-align:left; background:rgba(255,255,255,0.1);
                 border-radius:12px; padding:15px; box-shadow:0 0 8px rgba(0,0,0,0.3);">
-      <h3 style="margin-bottom:10px; color:#03a9f4;">Live Route Suggestion 🚗</h3>
+      <h3 style="margin-bottom:10px; color:#03a9f4;">Morning Rush Suggestion </h3>
       <p id="morningSuggestion" style="line-height:1.6;">Fetching latest morning rush info...</p>
     </div>
   </div>
@@ -213,7 +213,7 @@ function showMorningChart() {
       let suggestionText = "No major rush routes detected.";
       if (Object.keys(routeCounts).length > 0) {
         const [topRoute] = Object.entries(routeCounts).sort((a, b) => b[1] - a[1])[0];
-        suggestionText = `📍 Heavy rush observed between <b>${topRoute}</b> during morning hours.`;
+        suggestionText = `Heavy rush observed between <b>${topRoute}</b> during morning hours.`;
       }
 
       document.getElementById("morningSuggestion").innerHTML = suggestionText;
@@ -231,10 +231,10 @@ function showMorningChart() {
       morningChartInstance = new Chart(ctx, {
         type: "doughnut",
         data: {
-          labels: ["Low", "Moderate", "High"],
+          labels: ["High", "Moderate", "Low"],
           datasets: [{
-            data: [30, 40, 30],
-            backgroundColor: ["#4CAF50", "#FFC107", "#F44336"],
+            data: [41.2, 19, 10],
+            backgroundColor: ["#F44336","#FFC107", "#4CAF50"],
             borderWidth: 0,
             cutout: "70%"
           }]
@@ -288,7 +288,7 @@ nightPopup.innerHTML = `
     <!-- Right: Live Suggestion Box -->
     <div style="color:white; width:270px; text-align:left; background:rgba(255,255,255,0.1);
                 border-radius:12px; padding:15px; box-shadow:0 0 8px rgba(0,0,0,0.3);">
-      <h3 style="margin-bottom:10px; color:#03a9f4;">Live Route Suggestion </h3>
+      <h3 style="margin-bottom:10px; color:#03a9f4;">Night Rush Suggestion </h3>
       <p id="nightSuggestion" style="line-height:1.6;">Fetching latest night rush info...</p>
     </div>
   </div>
@@ -368,9 +368,9 @@ function showNightChart() {
       nightChartInstance = new Chart(ctx, {
         type: "doughnut",
         data: {
-          labels: ["Low", "Moderate", "High"],
+          labels: ["High","Moderate","Low"],
           datasets: [{
-            data: [35, 40, 25],
+            data: [17.6, 12, 6],
             backgroundColor: ["#4CAF50", "#FFC107", "#F44336"],
             borderWidth: 0,
             cutout: "70%"
@@ -399,7 +399,7 @@ function showNightChart() {
       });
     })
     .catch(() => {
-      document.getElementById("nightSuggestion").textContent = "⚠️ Could not load live routes.";
+      document.getElementById("nightSuggestion").textContent = " Could not load live routes.";
       document.getElementById("nightAvgWait").textContent = "Failed to load night traffic data.";
     });
 }
@@ -484,7 +484,7 @@ function showTransportChart() {
       let leastUsed = sortedModes[sortedModes.length - 1] ? sortedModes[sortedModes.length - 1][0] : "N/A";
 
       document.getElementById("transportUsage").innerHTML = `
-        Usage Level: Moderate 🚆<br>
+        Usage Level: Moderate <br>
         Public transport share: ${publicPercent}%<br>
         <span style="color:#03a9f4;">Auto-refreshing every 30s</span>
       `;
@@ -504,7 +504,7 @@ function showTransportChart() {
         data: {
           labels: ['Low', 'Moderate', 'High'],
           datasets: [{
-            data: [30, 40, 30],
+            data: [0,39.2,0],
             backgroundColor: ['#4CAF50', '#FFC107', '#F44336'],
             borderWidth: 0,
             cutout: '70%'
